@@ -19,6 +19,10 @@ The plan is to go through a review of React by making a movies app will show a l
 - The movieList component renders out our favourite films
 - For this challenge, create the necessary components and just add some dummy text if required. They don't need to be functional yet then import them into the App component to render. Please also make them function-based as opposed to class components
 
+### 3 - Controlled MovieInput
+
+- In the MovieInput component, implement state so the input element is now controlled
+
 ## Available Scripts
 
 In the project directory, you can run:
