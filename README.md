@@ -11,6 +11,14 @@ The plan is to go through a review of React by making a movies app will show a l
 - Create a components directory subfolder then add an App component
 - Make sure everything is working properly and the App component is rendering "Hello World" on the screen
 
+### 2 - Component Creation
+
+- At this stage, we'll need the following components for our app: header, movieInput and movieList
+- The header will render a title "My Favourite Movies"
+- The movieInput component will be an input field where eventually we will type in a movie and it will add that to our favourite movie list
+- The movieList component renders out our favourite films
+- For this challenge, create the necessary components and just add some dummy text if required. They don't need to be functional yet
+
 ## Available Scripts
 
 In the project directory, you can run:
