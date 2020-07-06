@@ -1,5 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# React Review - Movies App
+
+The plan is to go through a review of React by making a movies app will show a list of favourite movies. By the end of the review this app will have full CRUD capabilities. Navigate through each challenge branch till you reach the end.
+
+### 1 - Setup
+
+- Clone the app and switch to the 1-setup branch
+- Setup the src directory how we have done in class
+- Create a components directory subfolder then add an App component
+- Make sure everything is working properly and the App component is rendering "Hello World" on the screen
+
 ## Available Scripts
 
 In the project directory, you can run:
