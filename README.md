@@ -17,7 +17,7 @@ The plan is to go through a review of React by making a movies app will show a l
 - The header will render a title "My Favourite Movies"
 - The movieInput component will be an input field where eventually we will type in a movie and it will add that to our favourite movie list
 - The movieList component renders out our favourite films
-- For this challenge, create the necessary components and just add some dummy text if required. They don't need to be functional yet
+- For this challenge, create the necessary components and just add some dummy text if required. They don't need to be functional yet then import them into the App component to render
 
 ## Available Scripts
 
