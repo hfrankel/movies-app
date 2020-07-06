@@ -34,7 +34,7 @@ The plan is to go through a review of React by making a movies app will show a l
 
 - We're going to start refactoring the app in preparation for what's to come.
 - The challenge now is to move our API call up to the App component and still have our application be functional.
-- Now once the user types in which movie to search, the relevant film's title should be rendered in a seperate component called MovieSelector to be rendered underneath the MovieInput component.
+- Now once the user types in which movie to search, the relevant film's title should be displayed in a seperate component called MovieSelector to be rendered below MovieInput in App.js.
 
 ## Available Scripts
 
