@@ -7,20 +7,30 @@ import MovieSelector from './MovieSelector';
 
 const App = () => {
   const [retrievedMovie, setRetrievedMovie] = useState('');
+  const [isFound, setIsFound] = useState(false);
   const OMDB_API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
   const onSubmit = async (input) => {
-    const response = await axios.get(
-      `http://www.omdbapi.com/?t=${input}&apikey=${OMDB_API_KEY}`
-    );
-    setRetrievedMovie(response.data);
+    try {
+      const response = await axios.get(
+        `http://www.omdbapi.com/?t=${input}&apikey=${OMDB_API_KEY}`
+      );
+      if (response.data.Title !== undefined) {
+        setIsFound(true);
+        setRetrievedMovie(response.data);
+      } else {
+        alert('No result found');
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
     <>
       <Header />
       <MovieInput onSubmit={onSubmit} />
-      <MovieSelector movie={retrievedMovie} />
+      <MovieSelector movie={retrievedMovie} isFound={isFound} />
       <MovieList />
     </>
   );

@@ -36,6 +36,12 @@ The plan is to go through a review of React by making a movies app will show a l
 - The challenge now is to move our API call up to the App component and still have our application be functional.
 - Now once the user types in which movie to search, the relevant film's title should be displayed in a seperate component called MovieSelector to be rendered below MovieInput in App.js.
 
+### 6 - Error Handling
+
+- In the App component implement some error handling incase the API call comes back with any errors.
+- In the MovieSelector component unless a search result has come back from the API, display the message "Find a movie".
+- If the search comes back with no results have an alert pop up saying "No result found".
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -12,7 +12,7 @@ const MovieInput = ({ onSubmit }) => {
 
   return (
     <>
-      <input type="text" placeholder="Add Movie" onKeyUp={handleSearch} />
+      <input type="text" placeholder="Search" onKeyUp={handleSearch} />
     </>
   );
 };
