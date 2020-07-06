@@ -44,7 +44,7 @@ The plan is to go through a review of React by making a movies app will show a l
 
 ### 7 - Linking To External Resources
 
-- We're going to add functionality to our search result so it pops up as a hyperlink to the relevant IMDb page
+- We're going to add functionality to our search result so it pops up as a hyperlink to the relevant IMDb page in a new tab.
 
 ## Available Scripts
 

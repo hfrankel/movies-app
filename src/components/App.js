@@ -16,7 +16,6 @@ const App = () => {
         `http://www.omdbapi.com/?t=${input}&apikey=${OMDB_API_KEY}`
       );
       if (response.data.Title !== undefined) {
-        console.log(response.data);
         setIsFound(true);
         setRetrievedMovie(response.data);
       } else {
