@@ -23,6 +23,12 @@ The plan is to go through a review of React by making a movies app will show a l
 
 - In the MovieInput component, implement state so the input element is now controlled
 
+### 4 - API Call
+
+- We now want to have the ability to make an API call to the OMDb API by searching for a movie and having that movie's details render on the page
+- We will implement a simpler version first then refactor later but for now make the API call from your MovieInput component. The user should type in the input field then press enter and the relevant movie details should render below
+- Sign up for a free API key at http://www.omdbapi.com/apikey.aspx
+
 ## Available Scripts
 
 In the project directory, you can run:
