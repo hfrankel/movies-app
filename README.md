@@ -28,6 +28,7 @@ The plan is to go through a review of React by making a movies app will show a l
 - We now want to have the ability to make an API call to the OMDb API by searching for a movie and having that movie's details render on the page
 - We will implement a simpler version first then refactor later but for now make the API call from your MovieInput component. The user should type in the input field then press enter and the relevant movie details should render below
 - Sign up for a free API key at http://www.omdbapi.com/apikey.aspx
+- IMPORTANT: do not upload your API key to GitHub. Use an environment variable to store your API key. In the root of your project create a .env file. In that file create an environment variable like this REACT_APP_OMDB_API_KEY=yourAPIkey. Replace yourAPIkey with the actual key. ALSO IMPORTANT then add .env to your gitignore file. Now you can use your API key with process.env.REACT_APP_OMDB_API_KEY anywhere in your app. See https://create-react-app.dev/docs/adding-custom-environment-variables/ for more details. You may have to restart the server to get your environment variable working.
 
 ## Available Scripts
 
