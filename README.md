@@ -30,6 +30,12 @@ The plan is to go through a review of React by making a movies app will show a l
 - Sign up for a free API key at http://www.omdbapi.com/apikey.aspx
 - IMPORTANT: do not upload your API key to GitHub. Use an environment variable to store your API key. In the root of your project create a .env file. In that file create an environment variable like this REACT_APP_OMDB_API_KEY=yourAPIkey. Replace yourAPIkey with the actual key. ALSO IMPORTANT then add .env to your gitignore file. Now you can use your API key with process.env.REACT_APP_OMDB_API_KEY anywhere in your app. See https://create-react-app.dev/docs/adding-custom-environment-variables/ for more details. You may have to restart the server to get your environment variable working.
 
+### 5 - Lifting State
+
+- We're going to start refactoring the app in preparation for what's to come.
+- The challenge now is to move our API call up to the App component and still have our application be functional.
+- Now once the user types in which movie to search, the relevant film's title should be rendered in a seperate component called MovieSelector to be rendered underneath the MovieInput component.
+
 ## Available Scripts
 
 In the project directory, you can run:
