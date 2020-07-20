@@ -1,24 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import MovieContext from './../contexts/MovieContext';
 
-const MovieList = ({ favouriteMovies, removeMovie }) => {
-  const renderedFavouriteMovies = favouriteMovies.map((favouriteMovie) => {
+const MovieList = () => {
+  const { displayedMovies } = useContext(MovieContext);
+  const renderStoredMovies = displayedMovies.map((movie) => {
     return (
-      <li key={favouriteMovie.imdbID} style={{ listStyle: 'none' }}>
-        <a
-          href={`https://www.imdb.com/title/${favouriteMovie.imdbID}/`}
-          target="blank"
-        >
-          {favouriteMovie.Title}
-        </a>
-        <button onClick={() => removeMovie(favouriteMovie)}>Remove</button>
-      </li>
+      <div key={movie.id}>
+        <Link to={`/movie/${movie.id}/${movie.tmdbid}`}>
+          <img
+            src={`http://image.tmdb.org/t/p/w400/${movie.poster_path}`}
+            alt={`${movie.title} poster`}
+          />
+        </Link>
+      </div>
     );
   });
 
   return (
     <>
-      <h3>Favourite Movies</h3>
-      <ul>{renderedFavouriteMovies}</ul>
+      <ul>{renderStoredMovies}</ul>
     </>
   );
 };

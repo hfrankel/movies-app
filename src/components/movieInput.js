@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import MovieContext from './../contexts/MovieContext';
 
-const MovieInput = ({ onSubmit }) => {
+const MovieInput = ({ searchedYet }) => {
   const [movieSearch, setMovieSearch] = useState('');
+  const { onSubmit, handleTrendingOrSearchResults } = useContext(MovieContext);
 
   const handleSearch = (event) => {
     setMovieSearch(event.target.value);
     if (event.keyCode === 13) {
       onSubmit(movieSearch);
+      searchedYet();
     }
   };
 
