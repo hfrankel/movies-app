@@ -5,7 +5,6 @@ const MovieSelector = () => {
   const {
     externalApiMovies,
     storedMovies,
-    isFound,
     addFavourite,
     deleteFavourite,
   } = useContext(MovieContext);

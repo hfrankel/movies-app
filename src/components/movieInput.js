@@ -3,7 +3,7 @@ import MovieContext from './../contexts/MovieContext';
 
 const MovieInput = ({ searchedYet }) => {
   const [movieSearch, setMovieSearch] = useState('');
-  const { onSubmit, handleTrendingOrSearchResults } = useContext(MovieContext);
+  const { onSubmit } = useContext(MovieContext);
 
   const handleSearch = (event) => {
     setMovieSearch(event.target.value);

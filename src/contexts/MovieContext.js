@@ -7,8 +7,6 @@ export const MovieStore = (props) => {
   const [externalApiMovies, setExternalApiMovies] = useState([]);
   const [storedMovies, setStoredMovies] = useState([]);
   const [displayedMovies, setDisplayedMovies] = useState([]);
-  const [isFound, setIsFound] = useState(false);
-
   const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const FAVOURITE_MOVIES_API = process.env.REACT_APP_FAVOURTIE_MOVIES_API;
 
@@ -18,8 +16,6 @@ export const MovieStore = (props) => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${input}`
       );
-
-      setIsFound(true);
       setExternalApiMovies(response.data.results);
       console.log(response.data.results);
     } catch (e) {}
@@ -74,7 +70,6 @@ export const MovieStore = (props) => {
         externalApiMovies,
         storedMovies,
         displayedMovies,
-        isFound,
         onSubmit,
         addFavourite,
         deleteFavourite,
