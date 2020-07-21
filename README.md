@@ -1,51 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# React Review - Movies App
-
-The plan is to go through a review of React by making a movies app will show a list of favourite movies. By the end of the review this app will have full CRUD capabilities. Navigate through each challenge branch till you reach the end.
-
-### 1 - Setup
-
-- Clone the app and switch to the 1-setup branch
-- Setup the src directory how we have done in class
-- Create a components directory subfolder then add an App component
-- Make sure everything is working properly and the App component is rendering "Hello World" on the screen
-
-### 2 - Component Creation
-
-- At this stage, we'll need the following components for our app: header, movieInput and movieList
-- The header will render a title "My Favourite Movies"
-- The movieInput component will be an input field where eventually we will type in a movie and it will add that to our favourite movie list
-- The movieList component renders out our favourite films
-- For this challenge, create the necessary components and just add some dummy text if required. They don't need to be functional yet then import them into the App component to render. Please also make them function-based as opposed to class components
-
-### 3 - Controlled MovieInput
-
-- In the MovieInput component, implement state so the input element is now controlled
-
-### 4 - API Call
-
-- We now want to have the ability to make an API call to the OMDb API by searching for a movie and having that movie's details render on the page
-- We will implement a simpler version first then refactor later but for now make the API call from your MovieInput component. The user should type in the input field then press enter and the relevant movie details should render below
-- Sign up for a free API key at http://www.omdbapi.com/apikey.aspx
-- IMPORTANT: do not upload your API key to GitHub. Use an environment variable to store your API key. In the root of your project create a .env file. In that file create an environment variable like this REACT_APP_OMDB_API_KEY=yourAPIkey. Replace yourAPIkey with the actual key. ALSO IMPORTANT then add .env to your gitignore file. Now you can use your API key with process.env.REACT_APP_OMDB_API_KEY anywhere in your app. See https://create-react-app.dev/docs/adding-custom-environment-variables/ for more details. You may have to restart the server to get your environment variable working.
-
-### 5 - Lifting State
-
-- We're going to start refactoring the app in preparation for what's to come.
-- The challenge now is to move our API call up to the App component and still have our application be functional.
-- Now once the user types in which movie to search, the relevant film's title should be displayed in a seperate component called MovieSelector to be rendered below MovieInput in App.js.
-
-### 6 - Error Handling
-
-- In the App component implement some error handling incase the API call comes back with any errors.
-- In the MovieSelector component unless a search result has come back from the API, display the message "Find a movie".
-- If the search comes back with no results have an alert pop up saying "No result found".
-
-### 7 - Linking To External Resources
-
-- We're going to add functionality to our search result so it pops up as a hyperlink to the relevant IMDb page in a new tab.
-
 ## Available Scripts
 
 In the project directory, you can run:
