@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import MovieContext from './../contexts/MovieContext';
+import Rating from 'react-rating';
 
 const TrendingMovies = () => {
   const [tmdbTrendingMovies, setTmdbTrendingMovies] = useState([]);
+  const { addFavourite, storedMovies } = useContext(MovieContext);
 
   useEffect(() => {
     try {
@@ -17,6 +20,18 @@ const TrendingMovies = () => {
     }
   }, []);
 
+  const handleAdd = (movie, event) => {
+    if (
+      storedMovies.some(
+        (favouriteMovie) => favouriteMovie.title === movie.title
+      )
+    ) {
+      // do nothing
+    } else {
+      addFavourite(movie, movie.title, movie.id, movie.poster_path);
+    }
+  };
+
   const renderTrendingMovies = tmdbTrendingMovies.map((movie, index) => {
     return (
       <div key={movie.id} style={{ marginBottom: '40px' }}>
@@ -25,8 +40,8 @@ const TrendingMovies = () => {
           alt={`${movie.title} poster`}
         />
         <div>
-          <button>Add</button>
-          <button>Trailer</button>
+          <button onClick={() => handleAdd(movie)}>Add</button>
+          <Rating />
         </div>
       </div>
     );

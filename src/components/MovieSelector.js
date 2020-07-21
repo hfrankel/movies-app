@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 import MovieContext from './../contexts/MovieContext';
+import Rating from 'react-rating';
 
 const MovieSelector = () => {
-  const {
-    externalApiMovies,
-    storedMovies,
-    addFavourite,
-    deleteFavourite,
-  } = useContext(MovieContext);
+  const { externalApiMovies, storedMovies, addFavourite } = useContext(
+    MovieContext
+  );
 
   const handleAdd = (movie) => {
     if (
@@ -15,11 +13,7 @@ const MovieSelector = () => {
         (favouriteMovie) => favouriteMovie.title === movie.title
       )
     ) {
-      const targetedMovie = storedMovies.filter(
-        (target) => target.title === movie.title
-      );
-
-      deleteFavourite(targetedMovie[0]['id']);
+      // do nothing
     } else {
       addFavourite(movie, movie.title, movie.id, movie.poster_path);
     }
@@ -40,6 +34,7 @@ const MovieSelector = () => {
           <button onClick={() => handleAdd(movie)}>Add</button>
           <button>Trailer</button>
         </div>
+        <Rating />
       </div>
     );
   });
