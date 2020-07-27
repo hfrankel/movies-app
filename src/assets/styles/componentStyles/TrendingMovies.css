@@ -1,0 +1,28 @@
+.trending-movies-div-3-posters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 40px;
+}
+.trending-movies-div-4-posters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-row-gap: 40px;
+}
+
+.trending-movies-div-2-posters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 40px;
+}
+
+.trending-movies-div-1-poster {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 40px;
+}
+
+.trending-movies-poster-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

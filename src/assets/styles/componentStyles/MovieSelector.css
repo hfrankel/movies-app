@@ -1,0 +1,28 @@
+.movie-selector-div-3-posters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 40px;
+}
+.movie-selector-div-4-posters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-row-gap: 40px;
+}
+
+.movie-selector-div-2-posters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 40px;
+}
+
+.movie-selector-div-1-poster {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 40px;
+}
+
+.movie-selector-poster-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

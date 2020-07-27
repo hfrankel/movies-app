@@ -8,7 +8,7 @@ export const MovieStore = (props) => {
   const [storedMovies, setStoredMovies] = useState([]);
   const [displayedMovies, setDisplayedMovies] = useState([]);
   const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-  const FAVOURITE_MOVIES_API = process.env.REACT_APP_FAVOURTIE_MOVIES_API;
+  const FAVOURITE_MOVIES_API = process.env.REACT_APP_FAVOURITE_MOVIES_API;
 
   const onSubmit = async (input) => {
     // Get movies from TDMB API
@@ -26,7 +26,7 @@ export const MovieStore = (props) => {
     try {
       (async () => {
         const response = await axios.get(
-          `${process.env.REACT_APP_FAVOURTIE_MOVIES_API}`
+          `${process.env.REACT_APP_FAVOURITE_MOVIES_API}`
         );
         setStoredMovies(response.data);
       })();

@@ -1,0 +1,27 @@
+.movie-list-div-3-posters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 40px;
+}
+.movie-list-div-4-posters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-row-gap: 40px;
+}
+
+.movie-list-div-2-posters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 40px;
+}
+
+.movie-list-div-1-poster {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 40px;
+}
+
+.movie-list-poster-container {
+  display: flex;
+  justify-content: center;
+}
