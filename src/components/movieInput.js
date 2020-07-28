@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Input } from 'semantic-ui-react';
 import MovieContext from './../contexts/MovieContext';
 
 const MovieInput = ({ searchedYet }) => {
@@ -15,7 +16,16 @@ const MovieInput = ({ searchedYet }) => {
 
   return (
     <>
-      <input type="text" placeholder="Search" onKeyUp={handleSearch} />
+      <Input
+        placeholder="Search"
+        onKeyUp={handleSearch}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          marginBottom: '40px',
+        }}
+      />
     </>
   );
 };

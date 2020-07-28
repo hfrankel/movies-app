@@ -12,7 +12,7 @@ const SearchView = () => {
 
   return (
     <>
-      <Header title={'Search'} />
+      <Header title={'The Movie Database'} />
       <MovieInput searchedYet={searchedYet} />
       {hasSearched ? <MovieSelector /> : <TrendingMovies />}
     </>
