@@ -1,15 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Menu } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
 
 const Navbar = () => {
+  const [activeItem, setActiveItem] = useState('');
+  const history = useHistory();
+
   return (
     <>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
-      <Link to="/movie/search">
-        <button>Search</button>
-      </Link>
+      <Menu>
+        <Menu.Item
+          name="home"
+          onClick={() => history.push('/')}
+          onChange={() => setActiveItem('home')}
+          active={activeItem === 'home'}
+        >
+          Home
+        </Menu.Item>
+
+        <Menu.Item
+          name="search"
+          onClick={() => history.push('/movie/search')}
+          onChange={() => setActiveItem('search')}
+          active={activeItem === 'search'}
+        >
+          Search
+        </Menu.Item>
+      </Menu>
     </>
   );
 };

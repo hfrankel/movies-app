@@ -1,0 +1,25 @@
+.two-col-table-container {
+  display: grid;
+  grid-template-columns: 8em 1fr;
+}
+
+.two-col-table-key {
+  background: rgba(0, 0, 0, 0.03);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.95);
+  font-size: 1em;
+  padding: 0.78571429em;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  box-shadow: none;
+  border-radius: 0.28571429rem;
+}
+.two-col-table-value {
+  background: rgb(255, 255, 255);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.95);
+  font-size: 1em;
+  padding: 0.78571429em;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  box-shadow: none;
+  border-radius: 0.28571429rem;
+}

@@ -7,6 +7,7 @@ import ViewMovie from './pages/ViewMovie';
 import SearchView from './pages/SearchView';
 import Navbar from './components/Navbar';
 import './assets/styles/Reset.css';
+import 'semantic-ui-css/semantic.min.css';
 
 const Router = () => {
   return (
@@ -17,12 +18,7 @@ const Router = () => {
           <Switch>
             <Route exact path="/" component={HomeView} />
             <Route exact path="/movie/search" component={SearchView} />
-            <Route
-              exact
-              path="/movie/:id/:tmdbid"
-              component={ViewMovie}
-              children={<ViewMovie />}
-            />
+            <Route exact path="/movie/:id/:tmdbid" component={ViewMovie} />
           </Switch>
         </BrowserRouter>
       </MovieStore>
