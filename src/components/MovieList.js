@@ -4,10 +4,25 @@ import MovieContext from './../contexts/MovieContext';
 import ViewportContext from './../contexts/ViewportContext';
 import './../assets/styles/componentStyles/MovieList.css';
 
-const MovieList = () => {
+const MovieList = ({ filterSearch }) => {
   const { storedMovies } = useContext(MovieContext);
   const { width } = useContext(ViewportContext);
-  const renderStoredMovies = storedMovies.map((movie) => {
+
+  const filteredMovies = storedMovies.filter((movie) => {
+    return movie.title.toLowerCase().includes(filterSearch.toLowerCase());
+  });
+
+  const sortedMovies = filteredMovies.sort(function (a, b) {
+    if (a.title.toLowerCase() < b.title.toLowerCase()) {
+      return -1;
+    }
+    if (a.title.toLowerCase() > b.title.toLowerCase()) {
+      return 1;
+    }
+    return 0;
+  });
+
+  const renderStoredFilteredMovies = sortedMovies.map((movie) => {
     return (
       <div key={movie.id} className="movie-list-poster-container">
         <Link to={`/movie/${movie.id}/${movie.tmdbid}`}>
@@ -21,13 +36,29 @@ const MovieList = () => {
   });
 
   if (width > 1611) {
-    return <div className="movie-list-div-4-posters">{renderStoredMovies}</div>;
+    return (
+      <div className="movie-list-div-4-posters">
+        {renderStoredFilteredMovies}
+      </div>
+    );
   } else if (width > 1211) {
-    return <div className="movie-list-div-3-posters">{renderStoredMovies}</div>;
+    return (
+      <div className="movie-list-div-3-posters">
+        {renderStoredFilteredMovies}
+      </div>
+    );
   } else if (width > 805) {
-    return <div className="movie-list-div-2-posters">{renderStoredMovies}</div>;
+    return (
+      <div className="movie-list-div-2-posters">
+        {renderStoredFilteredMovies}
+      </div>
+    );
   } else {
-    return <div className="movie-list-div-1-poster">{renderStoredMovies}</div>;
+    return (
+      <div className="movie-list-div-1-poster">
+        {renderStoredFilteredMovies}
+      </div>
+    );
   }
 };
 
