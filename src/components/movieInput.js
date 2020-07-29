@@ -17,6 +17,7 @@ const MovieInput = ({ searchedYet }) => {
   return (
     <>
       <Input
+        autoFocus
         placeholder="Search"
         onKeyUp={handleSearch}
         style={{
