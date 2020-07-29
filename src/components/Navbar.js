@@ -24,7 +24,7 @@ const Navbar = () => {
           onChange={() => setActiveItem('search')}
           active={activeItem === 'search'}
         >
-          Search
+          TMDB
         </Menu.Item>
       </Menu>
     </>

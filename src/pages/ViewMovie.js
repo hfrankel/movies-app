@@ -36,7 +36,7 @@ const ViewMovie = () => {
   }
 
   const handleClick = (event, viewedMovie) => {
-    if (event.target.innerText === 'added') {
+    if (event.target.innerText === 'add') {
       addFavourite(
         viewedMovie,
         viewedMovie.title,
@@ -48,7 +48,7 @@ const ViewMovie = () => {
       }
     }
 
-    if (event.target.innerText === 'removed') {
+    if (event.target.innerText === 'remove') {
       deleteFavourite(id, viewedMovie);
       if (checkMovie(storedMovies, viewedMovie) === true) {
         setRedirectToHome('/');
@@ -76,13 +76,13 @@ const ViewMovie = () => {
             </a>
             <div style={{ display: 'flex' }}>
               <CustomAnimatedButton
-                type="added"
+                type="add"
                 icon="check circle outline"
                 handleClick={handleClick}
                 viewedMovie={viewedMovie}
               />
               <CustomAnimatedButton
-                type="removed"
+                type="remove"
                 icon="times circle outline"
                 handleClick={handleClick}
                 viewedMovie={viewedMovie}
