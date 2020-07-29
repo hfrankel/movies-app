@@ -3,8 +3,6 @@ import './../assets/styles/componentStyles/TwoColTable.css';
 
 const TwoColTable = ({ info }) => {
   const [myInfo, setMyInfo] = useState([]);
-  const [alt, setAlt] = useState('');
-  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     setMyInfo([
@@ -15,10 +13,7 @@ const TwoColTable = ({ info }) => {
       ['Budget', info.budget],
       ['Run-Time', info.runtime],
     ]);
-    setAlt(info);
   }, [info]);
-
-  console.log(myInfo);
 
   const renderInfo = myInfo.map((data, index) => {
     return (

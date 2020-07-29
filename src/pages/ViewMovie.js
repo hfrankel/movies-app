@@ -4,13 +4,16 @@ import axios from 'axios';
 import MovieContext from './../contexts/MovieContext';
 import ViewportContext from './../contexts/ViewportContext';
 import TwoColTable from './../components/TwoColTable';
+import CustomAnimatedButton from './../components/CustomAnimatedButton';
 import './../assets/styles/pageStyles/ViewMovie.css';
 
 const ViewMovie = () => {
   const [viewedMovie, setViewedMovie] = useState('');
-  const [isDeleted, setIsDeleted] = useState(false);
+  const [redirectToHome, setRedirectToHome] = useState('');
   let { tmdbid, id } = useParams();
-  const { deleteFavourite } = useContext(MovieContext);
+  const { addFavourite, deleteFavourite, storedMovies } = useContext(
+    MovieContext
+  );
   const { width } = useContext(ViewportContext);
 
   useEffect(() => {
@@ -20,20 +23,41 @@ const ViewMovie = () => {
           `https://api.themoviedb.org/3/movie/${tmdbid}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
         );
         setViewedMovie(response.data);
-        console.log(response.data);
       })();
     } catch (e) {
       console.log(e);
     }
   }, []);
 
-  const handleClick = () => {
-    deleteFavourite(id);
-    setIsDeleted(true);
+  function checkMovie(storedMovies, viewedMovie) {
+    return storedMovies.some(function (storedMovie) {
+      return storedMovie.title === viewedMovie.title;
+    });
+  }
+
+  const handleClick = (event, viewedMovie) => {
+    if (event.target.innerText === 'added') {
+      addFavourite(
+        viewedMovie,
+        viewedMovie.title,
+        viewedMovie.id,
+        viewedMovie.poster_path
+      );
+      if (checkMovie(storedMovies, viewedMovie) === false) {
+        setRedirectToHome('/');
+      }
+    }
+
+    if (event.target.innerText === 'removed') {
+      deleteFavourite(id, viewedMovie);
+      if (checkMovie(storedMovies, viewedMovie) === true) {
+        setRedirectToHome('/');
+      }
+    }
   };
 
-  if (isDeleted === true) {
-    return <Redirect to="/" />;
+  if (redirectToHome) {
+    return <Redirect to={`${redirectToHome}`} />;
   }
 
   if (width > 1140) {
@@ -50,7 +74,20 @@ const ViewMovie = () => {
                 alt={`${viewedMovie.title} poster`}
               />
             </a>
-            <button onClick={handleClick}>Remove</button>
+            <div style={{ display: 'flex' }}>
+              <CustomAnimatedButton
+                type="added"
+                icon="check circle outline"
+                handleClick={handleClick}
+                viewedMovie={viewedMovie}
+              />
+              <CustomAnimatedButton
+                type="removed"
+                icon="times circle outline"
+                handleClick={handleClick}
+                viewedMovie={viewedMovie}
+              />
+            </div>
           </div>
           <TwoColTable info={viewedMovie} className="view-movie-right-col" />
         </div>
@@ -70,7 +107,10 @@ const ViewMovie = () => {
                 alt={`${viewedMovie.title} poster`}
               />
             </a>
-            <button onClick={handleClick}>Remove</button>
+            <div style={{ display: 'flex' }}>
+              <CustomAnimatedButton type="add" icon="check circle outline" />
+              <CustomAnimatedButton type="remove" icon="times circle outline" />
+            </div>
           </div>
           <div className="view-movie-right-col-sm">
             <TwoColTable info={viewedMovie} />

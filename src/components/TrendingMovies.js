@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import MovieContext from './../contexts/MovieContext';
-import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
 import ViewportContext from '../contexts/ViewportContext';
 import './../assets/styles/componentStyles/TrendingMovies.css';
 
 const TrendingMovies = () => {
   const [tmdbTrendingMovies, setTmdbTrendingMovies] = useState([]);
-  const [myRating, setMyRating] = useState(0);
-  const { addFavourite, storedMovies } = useContext(MovieContext);
   const { width } = useContext(ViewportContext);
 
   useEffect(() => {
@@ -24,52 +21,15 @@ const TrendingMovies = () => {
     }
   }, []);
 
-  const handleAdd = (movie, event) => {
-    if (
-      storedMovies.some(
-        (favouriteMovie) => favouriteMovie.title === movie.title
-      )
-    ) {
-      // do nothing
-    } else {
-      addFavourite(movie, movie.title, movie.id, movie.poster_path);
-    }
-  };
-
-  // const handleRating = async (movie, event) => {
-  //   setMyRating(event);
-  //   console.log(myRating, movie);
-  //   const targetedMovie = storedMovies.filter(
-  //     (favMovie) => favMovie.title === movie.title
-  //   );
-  //   console.log(targetedMovie[0]['id']);
-
-  //   if (
-  //     storedMovies.some(
-  //       (favouriteMovie) => favouriteMovie.title === movie.title
-  //     )
-  //   ) {
-  //     const response = await axios.put(
-  //       `${process.env.REACT_APP_FAVOURITE_MOVIES_API}/${targetedMovie[0]['id']}}`,
-  //       { rating: myRating }
-  //     );
-  //     console.log(response);
-  //   } else {
-  //     console.log('Not got');
-  //   }
-  // };
-
   const renderTrendingMovies = tmdbTrendingMovies.map((movie, index) => {
     return (
       <div key={movie.id} className="trending-movies-poster-container">
-        <img
-          src={`http://image.tmdb.org/t/p/w400/${movie.poster_path}`}
-          alt={`${movie.title} poster`}
-        />
-        <div>
-          <button onClick={() => handleAdd(movie)}>Add</button>
-          {/* <Rating onChange={(e) => handleRating(movie, e)} /> */}
-        </div>
+        <Link to={`/movie/${movie.id}`}>
+          <img
+            src={`http://image.tmdb.org/t/p/w400/${movie.poster_path}`}
+            alt={`${movie.title} poster`}
+          />
+        </Link>
       </div>
     );
   });
