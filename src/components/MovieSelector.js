@@ -1,43 +1,27 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import MovieContext from './../contexts/MovieContext';
 import ViewportContext from './../contexts/ViewportContext';
-import Rating from 'react-rating';
 import './../assets/styles/componentStyles/MovieSelector.css';
 
 const MovieSelector = () => {
-  const { externalApiMovies, storedMovies, addFavourite } = useContext(
-    MovieContext
-  );
+  const { externalApiMovies } = useContext(MovieContext);
   const { width } = useContext(ViewportContext);
-
-  const handleAdd = (movie) => {
-    if (
-      storedMovies.some(
-        (favouriteMovie) => favouriteMovie.title === movie.title
-      )
-    ) {
-      // do nothing
-    } else {
-      addFavourite(movie, movie.title, movie.id, movie.poster_path);
-    }
-  };
 
   const moviesWithPosters = externalApiMovies.filter(
     (movie) => movie.poster_path !== null
   );
 
-  const renderReturnedMovies = moviesWithPosters.map((movie, index) => {
+  const renderReturnedMovies = moviesWithPosters.map((movie) => {
     return (
       <div key={movie.id} className="movie-selector-poster-container">
-        <img
-          src={`http://image.tmdb.org/t/p/w400/${movie.poster_path}`}
-          alt={`${movie.title} poster`}
-        />
-        <div>
-          <button onClick={() => handleAdd(movie)}>Add</button>
-          <button>Trailer</button>
-        </div>
-        <Rating />
+        <Link to={`/movie/${movie.id}`}>
+          <img
+            src={`http://image.tmdb.org/t/p/w400/${movie.poster_path}`}
+            alt={`${movie.title} poster`}
+          />
+        </Link>
+        <div></div>
       </div>
     );
   });

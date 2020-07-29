@@ -8,6 +8,8 @@ import SearchView from './pages/SearchView';
 import Navbar from './components/Navbar';
 import './assets/styles/Reset.css';
 import 'semantic-ui-css/semantic.min.css';
+// Delete below
+import Test from './pages/Test';
 
 const Router = () => {
   return (
@@ -19,6 +21,9 @@ const Router = () => {
             <Route exact path="/" component={HomeView} />
             <Route exact path="/movie/search" component={SearchView} />
             <Route exact path="/movie/:id/:tmdbid" component={ViewMovie} />
+            <Route exact path="/movie/:id/:tmdbid" component={ViewMovie} />
+            <Route exact path="/movie/:tmdbid" component={ViewMovie} />
+            <Route exact path="/test" component={Test} />
           </Switch>
         </BrowserRouter>
       </MovieStore>

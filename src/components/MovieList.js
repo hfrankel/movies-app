@@ -5,9 +5,9 @@ import ViewportContext from './../contexts/ViewportContext';
 import './../assets/styles/componentStyles/MovieList.css';
 
 const MovieList = () => {
-  const { displayedMovies } = useContext(MovieContext);
-  const { width, height } = useContext(ViewportContext);
-  const renderStoredMovies = displayedMovies.map((movie) => {
+  const { storedMovies } = useContext(MovieContext);
+  const { width } = useContext(ViewportContext);
+  const renderStoredMovies = storedMovies.map((movie) => {
     return (
       <div key={movie.id} className="movie-list-poster-container">
         <Link to={`/movie/${movie.id}/${movie.tmdbid}`}>
