@@ -11,6 +11,31 @@ export const MovieStore = (props) => {
   const [storedMovies, setStoredMovies] = useState([]);
   const [displayedMovies, setDisplayedMovies] = useState([]);
   const [rerender, setRerender] = useState(false);
+  const [userToken, setUserToken] = useState(null);
+  const [userStatus, setUserStatus] = useState('Login');
+
+  // Login
+  const loginUser = async (userEmail, userPassword) => {
+    const config = {
+      auth: {
+        email: userEmail,
+        password: userPassword,
+      },
+    };
+    const response = await axios.post(`${process.env.REACT_APP_AUTH}`, config);
+    if (response !== null) {
+      localStorage.setItem('token', response.data);
+      setUserToken(response.data);
+      setUserStatus('Logout');
+    }
+  };
+
+  // Logout
+  const logoutUser = () => {
+    setUserStatus('Login');
+    localStorage.removeItem('token');
+    setUserToken(null);
+  };
 
   // Get movies from TDMB API
   const onSubmit = async (input) => {
@@ -24,6 +49,7 @@ export const MovieStore = (props) => {
     }
   };
 
+  // Get stored movies from fav movies api
   const getStoredMovies = async () => {
     const response = await axios.get(
       `${process.env.REACT_APP_FAVOURITE_MOVIES_API}`
@@ -33,7 +59,7 @@ export const MovieStore = (props) => {
 
   useEffect(() => {
     getStoredMovies();
-  }, [rerender]);
+  }, [rerender, userToken]);
 
   // Add new movie to favourites
   const addFavourite = async (movie, movieTitle, tmdbId, posterPath) => {
@@ -83,6 +109,10 @@ export const MovieStore = (props) => {
         addFavourite,
         deleteFavourite,
         setDisplayedMovies,
+        loginUser,
+        logoutUser,
+        userToken,
+        userStatus,
       }}
     >
       {props.children}
