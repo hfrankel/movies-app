@@ -11,8 +11,12 @@ export const MovieStore = (props) => {
   const [storedMovies, setStoredMovies] = useState([]);
   const [displayedMovies, setDisplayedMovies] = useState([]);
   const [rerender, setRerender] = useState(false);
-  const [userToken, setUserToken] = useState(null);
+  const [userToken, setUserToken] = useState(localStorage.getItem('token'));
   const [userStatus, setUserStatus] = useState('Login');
+
+  // TEST
+  const [adminToken, setAdminToken] = useState({});
+  // TEST
 
   // Login
   const loginUser = async (userEmail, userPassword) => {
@@ -27,6 +31,9 @@ export const MovieStore = (props) => {
       localStorage.setItem('token', response.data);
       setUserToken(response.data);
       setUserStatus('Logout');
+
+      //TEST
+      setAdminToken(response.data.jwt);
     }
   };
 
@@ -61,7 +68,11 @@ export const MovieStore = (props) => {
     getStoredMovies();
   }, [rerender, userToken]);
 
-  // Add new movie to favourites
+  const instance = axios.create({
+    baseURL: `${process.env.REACT_APP_FAVOURITE_MOVIES_API}`,
+    headers: { Authorization: `Bearer ${adminToken}` },
+  });
+
   const addFavourite = async (movie, movieTitle, tmdbId, posterPath) => {
     if (
       storedMovies.some(
@@ -71,7 +82,7 @@ export const MovieStore = (props) => {
       // do nothing
     } else {
       try {
-        await axios.post(`${FAVOURITE_MOVIES_API}`, {
+        await instance.post('', {
           title: movieTitle,
           tmdbid: tmdbId,
           poster_path: posterPath,
@@ -91,7 +102,7 @@ export const MovieStore = (props) => {
       )
     ) {
       try {
-        await axios.delete(`${FAVOURITE_MOVIES_API}/${id}`);
+        await instance.delete(`/${id}`);
         setRerender(!rerender);
       } catch (e) {
         console.log(e);
