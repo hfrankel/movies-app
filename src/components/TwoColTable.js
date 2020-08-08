@@ -10,8 +10,7 @@ const TwoColTable = ({ info }) => {
       ['Tagline', info.tagline],
       ['Overview', info.overview],
       ['Release', info.release_date],
-      ['Budget', info.budget],
-      ['Run-Time', info.runtime],
+      ['Run-Time', info.runtime + ' mins'],
     ]);
   }, [info]);
 
