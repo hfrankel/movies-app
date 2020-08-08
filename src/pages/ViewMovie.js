@@ -44,14 +44,14 @@ const ViewMovie = () => {
         viewedMovie.poster_path
       );
       if (checkMovie(storedMovies, viewedMovie) === false) {
-        setRedirectToHome('/');
+        setRedirectToHome('/home');
       }
     }
 
     if (event.target.innerText === 'remove') {
       deleteFavourite(id, viewedMovie);
       if (checkMovie(storedMovies, viewedMovie) === true) {
-        setRedirectToHome('/');
+        setRedirectToHome('/home');
       }
     }
   };

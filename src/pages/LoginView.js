@@ -3,13 +3,12 @@ import { Form, Button } from 'semantic-ui-react';
 import MovieContext from './../contexts/MovieContext';
 import './../assets/styles/pageStyles/LoginView.css';
 
-const LoginView = ({ handleToken }) => {
+const LoginView = () => {
   const [emailVal, setEmailVal] = useState('');
   const [passwordVal, setPasswordVal] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const { loginUser } = useContext(MovieContext);
-  const [redirectPath, setRedirectPath] = useState('');
 
   const handleFormInputs = (event) => {
     if (event.target.id === 'form-input-email') {
@@ -47,7 +46,6 @@ const LoginView = ({ handleToken }) => {
             type="password"
           />
           <Button
-            //  type="submit"
             onClick={() => handleLogin(emailInput, passwordInput)}
             type="submit"
           >
