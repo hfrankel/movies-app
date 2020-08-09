@@ -8,7 +8,9 @@ const LoginView = () => {
   const [passwordVal, setPasswordVal] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
-  const { loginUser } = useContext(MovieContext);
+  const { loginUser, credentialsWarning, setCredentialsWarning } = useContext(
+    MovieContext
+  );
 
   const handleFormInputs = (event) => {
     if (event.target.id === 'form-input-email') {
@@ -22,12 +24,15 @@ const LoginView = () => {
 
   const handleLogin = (emailInput, passwordInput) => {
     loginUser(emailInput, passwordInput);
+
+    setCredentialsWarning('Must have valid credentials');
   };
 
   return (
     <>
       <div className="login-view-container">
         <h3 className="login-view-title">Login</h3>
+
         <Form className="login-view-form">
           <Form.Input
             // error={emailVal}
@@ -52,6 +57,7 @@ const LoginView = () => {
             Submit
           </Button>
         </Form>
+        <p className="login-view-credentials-warning">{credentialsWarning}</p>
       </div>
     </>
   );
