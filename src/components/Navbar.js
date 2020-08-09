@@ -1,19 +1,38 @@
 import React, { useState, useContext } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Icon } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 import MovieContext from './../contexts/MovieContext';
 
 const Navbar = () => {
   const [activeItem, setActiveItem] = useState('');
   const history = useHistory();
-  const { logoutUser, userStatus } = useContext(MovieContext);
+  const {
+    logoutUser,
+    userStatus,
+    credentialsWarning,
+    setCredentialsWarning,
+  } = useContext(MovieContext);
+
+  const checkUserStatus = () => {
+    if (userStatus === 'Logout' || localStorage.getItem('token')) {
+      return <Icon name="sign out" />;
+    }
+
+    return <Icon name="sign in" />;
+  };
+
+  const handleClick = (path) => {
+    history.push(`${path}`);
+    setCredentialsWarning('Must have valid credentials');
+  };
 
   return (
     <>
-      <Menu>
+      <Menu pointing secondary>
         <Menu.Item
           name="home"
-          onClick={() => history.push('/home')}
+          // onClick={() => history.push('/home')}
+          onClick={() => handleClick('/home')}
           onChange={() => setActiveItem('home')}
           active={activeItem === 'home'}
         >
@@ -22,20 +41,23 @@ const Navbar = () => {
 
         <Menu.Item
           name="search"
-          onClick={() => history.push('/movie/search')}
+          // onClick={() => history.push('/movie/search')}
+          onClick={() => handleClick('/movie/search')}
           onChange={() => setActiveItem('search')}
           active={activeItem === 'search'}
         >
           TMDB
         </Menu.Item>
-        <Menu.Item
-          name="logout"
-          onClick={() => logoutUser()}
-          onChange={() => setActiveItem('logout')}
-          active={activeItem === 'logout'}
-        >
-          {userStatus}
-        </Menu.Item>
+        <Menu.Menu position="right">
+          <Menu.Item
+            name="logout"
+            onClick={() => logoutUser()}
+            onChange={() => setActiveItem('logout')}
+            active={activeItem === 'logout'}
+          >
+            {checkUserStatus()}
+          </Menu.Item>
+        </Menu.Menu>
       </Menu>
     </>
   );

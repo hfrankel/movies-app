@@ -13,10 +13,8 @@ export const MovieStore = (props) => {
   const [rerender, setRerender] = useState(false);
   const [userToken, setUserToken] = useState(localStorage.getItem('token'));
   const [userStatus, setUserStatus] = useState('Login');
-
-  // TEST
   const [adminToken, setAdminToken] = useState({});
-  // TEST
+  const [credentialsWarning, setCredentialsWarning] = useState('');
 
   // Login
   const loginUser = async (userEmail, userPassword) => {
@@ -26,14 +24,22 @@ export const MovieStore = (props) => {
         password: userPassword,
       },
     };
-    const response = await axios.post(`${process.env.REACT_APP_AUTH}`, config);
-    if (response !== null) {
-      localStorage.setItem('token', response.data);
-      setUserToken(response.data);
-      setUserStatus('Logout');
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_AUTH}`,
+        config
+      );
 
-      //TEST
-      setAdminToken(response.data.jwt);
+      if (response !== null) {
+        localStorage.setItem('token', response.data);
+        setUserToken(response.data);
+        setUserStatus('Logout');
+
+        //TEST
+        setAdminToken(response.data.jwt);
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -124,6 +130,8 @@ export const MovieStore = (props) => {
         logoutUser,
         userToken,
         userStatus,
+        credentialsWarning,
+        setCredentialsWarning,
       }}
     >
       {props.children}
