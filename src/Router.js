@@ -17,6 +17,7 @@ const Router = () => {
       <BrowserRouter>
         <Navbar />
         <Switch>
+          <PublicRoute exact path="/" component={LoginView} />
           <PublicRoute exact path="/login" component={LoginView} />
           <PrivateRoute exact path="/home" component={HomeView} />
           <PrivateRoute exact path="/movie/search" component={SearchView} />
