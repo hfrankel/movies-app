@@ -8,7 +8,7 @@ import LoginView from './pages/LoginView';
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
-import './assets/styles/Reset.css';
+// import './assets/styles/Reset.css';
 import 'semantic-ui-css/semantic.min.css';
 
 const Router = () => {
