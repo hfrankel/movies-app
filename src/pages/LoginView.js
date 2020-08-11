@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import MovieContext from './../contexts/MovieContext';
+import ViewportContext from './../contexts/ViewportContext';
 import './../assets/styles/pageStyles/LoginView.css';
 
 const LoginView = () => {
@@ -11,6 +12,7 @@ const LoginView = () => {
   const { loginUser, credentialsWarning, setCredentialsWarning } = useContext(
     MovieContext
   );
+  const { width } = useContext(ViewportContext);
 
   const handleFormInputs = (event) => {
     if (event.target.id === 'form-input-email') {
@@ -28,39 +30,113 @@ const LoginView = () => {
     setCredentialsWarning('Must have valid credentials');
   };
 
-  return (
-    <>
-      <div className="login-view-container">
-        <h3 className="login-view-title">Login</h3>
+  if (width > 1200) {
+    return (
+      <>
+        <div className="login-view-container-lg">
+          <h3 className="login-view-title">Login</h3>
 
-        <Form className="login-view-form">
-          <Form.Input
-            // error={emailVal}
-            fluid
-            placeholder="Email"
-            id="form-input-email"
-            autoFocus
-            onKeyUp={handleFormInputs}
-          />
-          <Form.Input
-            // error={passwordVal}
-            fluid
-            placeholder="Password"
-            id="form-input-password"
-            onKeyUp={handleFormInputs}
-            type="password"
-          />
-          <Button
-            onClick={() => handleLogin(emailInput, passwordInput)}
-            type="submit"
-          >
-            Submit
-          </Button>
-        </Form>
-        <p className="login-view-credentials-warning">{credentialsWarning}</p>
-      </div>
-    </>
-  );
+          <Form className="login-view-form">
+            <Form.Input
+              // error={emailVal}
+              fluid
+              placeholder="Email"
+              id="form-input-email"
+              autoFocus
+              onKeyUp={handleFormInputs}
+            />
+            <Form.Input
+              // error={passwordVal}
+              fluid
+              placeholder="Password"
+              id="form-input-password"
+              onKeyUp={handleFormInputs}
+              type="password"
+            />
+            <Button
+              onClick={() => handleLogin(emailInput, passwordInput)}
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
+          <p className="login-view-credentials-warning">{credentialsWarning}</p>
+        </div>
+      </>
+    );
+  }
+
+  if (width > 800 && width <= 1200) {
+    return (
+      <>
+        <div className="login-view-container-md">
+          <h3 className="login-view-title">Login</h3>
+
+          <Form className="login-view-form">
+            <Form.Input
+              // error={emailVal}
+              fluid
+              placeholder="Email"
+              id="form-input-email"
+              autoFocus
+              onKeyUp={handleFormInputs}
+            />
+            <Form.Input
+              // error={passwordVal}
+              fluid
+              placeholder="Password"
+              id="form-input-password"
+              onKeyUp={handleFormInputs}
+              type="password"
+            />
+            <Button
+              onClick={() => handleLogin(emailInput, passwordInput)}
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
+          <p className="login-view-credentials-warning">{credentialsWarning}</p>
+        </div>
+      </>
+    );
+  }
+
+  if (width <= 800) {
+    return (
+      <>
+        <div className="login-view-container-sm">
+          <h3 className="login-view-title">Login</h3>
+
+          <Form className="login-view-form">
+            <Form.Input
+              // error={emailVal}
+              fluid
+              placeholder="Email"
+              id="form-input-email"
+              autoFocus
+              onKeyUp={handleFormInputs}
+            />
+            <Form.Input
+              // error={passwordVal}
+              fluid
+              placeholder="Password"
+              id="form-input-password"
+              onKeyUp={handleFormInputs}
+              type="password"
+            />
+            <Button
+              onClick={() => handleLogin(emailInput, passwordInput)}
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
+          <p className="login-view-credentials-warning">{credentialsWarning}</p>
+        </div>
+      </>
+    );
+  }
 };
 
 export default LoginView;
