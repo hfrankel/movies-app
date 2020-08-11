@@ -9,8 +9,8 @@ const CustomAnimatedButton = ({ type, icon, handleClick, viewedMovie }) => {
         onClick={(event) => handleClick(event, viewedMovie)}
         style={{ cursor: 'pointer' }}
       >
-        <Button.Content visible>
-          <Icon name={`${icon}`} />
+        <Button.Content visible style={{ cursor: 'pointer' }}>
+          <Icon name={`${icon}`} style={{ cursor: 'pointer' }} />
         </Button.Content>
         <Button.Content hidden>{type}</Button.Content>
       </Button>
