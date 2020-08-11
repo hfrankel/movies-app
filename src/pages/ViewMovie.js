@@ -108,8 +108,18 @@ const ViewMovie = () => {
               />
             </a>
             <div style={{ display: 'flex' }}>
-              <CustomAnimatedButton type="add" icon="check circle outline" />
-              <CustomAnimatedButton type="remove" icon="times circle outline" />
+              <CustomAnimatedButton
+                type="add"
+                icon="check circle outline"
+                handleClick={handleClick}
+                viewedMovie={viewedMovie}
+              />
+              <CustomAnimatedButton
+                type="remove"
+                icon="times circle outline"
+                handleClick={handleClick}
+                viewedMovie={viewedMovie}
+              />
             </div>
           </div>
           <div className="view-movie-right-col-sm">
