@@ -29,6 +29,8 @@ const MovieList = ({ filterSearch }) => {
           <img
             src={`http://image.tmdb.org/t/p/w400/${movie.poster_path}`}
             alt={`${movie.title} poster`}
+            style={{ width: '360px' }}
+            className="movie-list-poster-img"
           />
         </Link>
       </div>

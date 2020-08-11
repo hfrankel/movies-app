@@ -105,6 +105,7 @@ const ViewMovie = () => {
               <img
                 src={`http://image.tmdb.org/t/p/w400/${viewedMovie.poster_path}`}
                 alt={`${viewedMovie.title} poster`}
+                style={{ width: '360px' }}
               />
             </a>
             <div style={{ display: 'flex' }}>
