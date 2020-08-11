@@ -1,6 +1,18 @@
-.login-view-container {
+.login-view-container-lg {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.login-view-container-md {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.login-view-container-sm {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
 
