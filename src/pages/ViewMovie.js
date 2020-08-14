@@ -108,7 +108,13 @@ const ViewMovie = () => {
                 style={{ width: '360px' }}
               />
             </a>
-            <div style={{ display: 'flex' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: '5px',
+              }}
+            >
               <CustomAnimatedButton
                 type="add"
                 icon="check circle outline"
