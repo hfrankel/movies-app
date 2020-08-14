@@ -74,7 +74,7 @@ const ViewMovie = () => {
                 alt={`${viewedMovie.title} poster`}
               />
             </a>
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', marginTop: '5px' }}>
               <CustomAnimatedButton
                 type="add"
                 icon="check circle outline"
