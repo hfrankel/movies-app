@@ -9,8 +9,8 @@ const Navbar = () => {
   const {
     logoutUser,
     userStatus,
-    credentialsWarning,
-    setCredentialsWarning,
+    setEmailWarning,
+    setPasswordWarning,
   } = useContext(MovieContext);
 
   const checkUserStatus = () => {
@@ -23,7 +23,8 @@ const Navbar = () => {
 
   const handleClick = (path) => {
     history.push(`${path}`);
-    setCredentialsWarning('Must have valid credentials');
+    setEmailWarning('Must have valid email');
+    setPasswordWarning('Must have valid password');
   };
 
   return (

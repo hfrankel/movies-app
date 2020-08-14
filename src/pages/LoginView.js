@@ -1,33 +1,35 @@
 import React, { useState, useContext } from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Input, Label } from 'semantic-ui-react';
 import MovieContext from './../contexts/MovieContext';
 import ViewportContext from './../contexts/ViewportContext';
 import './../assets/styles/pageStyles/LoginView.css';
 
 const LoginView = () => {
-  const [emailVal, setEmailVal] = useState('');
-  const [passwordVal, setPasswordVal] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
-  const { loginUser, credentialsWarning, setCredentialsWarning } = useContext(
-    MovieContext
-  );
+  const {
+    loginUser,
+    emailWarning,
+    passwordWarning,
+    setEmailWarning,
+    setPasswordWarning,
+  } = useContext(MovieContext);
   const { width } = useContext(ViewportContext);
 
   const handleFormInputs = (event) => {
     if (event.target.id === 'form-input-email') {
+      setEmailWarning(null);
       setEmailInput(event.target.value);
     }
 
     if (event.target.id === 'form-input-password') {
+      setPasswordWarning(null);
       setPasswordInput(event.target.value);
     }
   };
 
   const handleLogin = (emailInput, passwordInput) => {
     loginUser(emailInput, passwordInput);
-
-    setCredentialsWarning('Must have valid credentials');
   };
 
   if (width > 1200) {
@@ -38,21 +40,49 @@ const LoginView = () => {
 
           <Form className="login-view-form">
             <Form.Input
-              // error={emailVal}
+              error={
+                emailWarning && { content: emailWarning, pointing: 'below' }
+              }
               fluid
               placeholder="Email"
               id="form-input-email"
               autoFocus
               onKeyUp={handleFormInputs}
             />
+            {/* <Form.Field inline>
+              <Input
+                placeholder="Email"
+                onKeyUp={handleFormInputs}
+                id="form-input-email"
+                autoFocus
+              />
+              {emailWarning && (
+                <Label pointing="left" color="red" basic>
+                  {emailWarning}
+                </Label>
+              )}
+            </Form.Field> */}
             <Form.Input
-              // error={passwordVal}
+              error={passwordWarning}
               fluid
               placeholder="Password"
               id="form-input-password"
               onKeyUp={handleFormInputs}
               type="password"
             />
+            {/* <Form.Field inline>
+              <Input
+                placeholder="Password"
+                onKeyUp={handleFormInputs}
+                id="form-input-password"
+                type="password"
+              />
+              {passwordWarning && (
+                <Label pointing="left" color="red" basic>
+                  {passwordWarning}
+                </Label>
+              )}
+            </Form.Field> */}
             <Button
               onClick={() => handleLogin(emailInput, passwordInput)}
               type="submit"
@@ -60,7 +90,6 @@ const LoginView = () => {
               Submit
             </Button>
           </Form>
-          <p className="login-view-credentials-warning">{credentialsWarning}</p>
         </div>
       </>
     );
@@ -74,7 +103,7 @@ const LoginView = () => {
 
           <Form className="login-view-form">
             <Form.Input
-              // error={emailVal}
+              error={emailWarning}
               fluid
               placeholder="Email"
               id="form-input-email"
@@ -82,7 +111,7 @@ const LoginView = () => {
               onKeyUp={handleFormInputs}
             />
             <Form.Input
-              // error={passwordVal}
+              error={passwordWarning}
               fluid
               placeholder="Password"
               id="form-input-password"
@@ -96,7 +125,6 @@ const LoginView = () => {
               Submit
             </Button>
           </Form>
-          <p className="login-view-credentials-warning">{credentialsWarning}</p>
         </div>
       </>
     );
@@ -110,7 +138,7 @@ const LoginView = () => {
 
           <Form className="login-view-form">
             <Form.Input
-              // error={emailVal}
+              error={emailWarning}
               fluid
               placeholder="Email"
               id="form-input-email"
@@ -118,7 +146,7 @@ const LoginView = () => {
               onKeyUp={handleFormInputs}
             />
             <Form.Input
-              // error={passwordVal}
+              error={passwordWarning}
               fluid
               placeholder="Password"
               id="form-input-password"
@@ -132,7 +160,6 @@ const LoginView = () => {
               Submit
             </Button>
           </Form>
-          <p className="login-view-credentials-warning">{credentialsWarning}</p>
         </div>
       </>
     );
