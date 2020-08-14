@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Input } from 'semantic-ui-react';
 import MovieContext from './../contexts/MovieContext';
 
-const MovieInput = ({ searchedYet }) => {
+const MovieInput = ({ setHasSearched, setActive }) => {
   const [movieSearch, setMovieSearch] = useState('');
   const { onSubmit } = useContext(MovieContext);
 
@@ -10,22 +10,27 @@ const MovieInput = ({ searchedYet }) => {
     setMovieSearch(event.target.value);
     if (event.keyCode === 13) {
       onSubmit(movieSearch);
-      searchedYet();
+      setActive(false);
     }
   };
 
   return (
     <>
-      <Input
-        placeholder="Search"
-        onKeyUp={handleSearch}
+      <div
         style={{
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          marginBottom: '40px',
+          justifyContent: 'center',
         }}
-      />
+      >
+        <Input
+          placeholder="Search"
+          onKeyUp={handleSearch}
+          style={{
+            width: '250px',
+            marginBottom: '20px',
+          }}
+        />
+      </div>
     </>
   );
 };

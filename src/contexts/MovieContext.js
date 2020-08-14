@@ -5,8 +5,6 @@ const MovieContext = React.createContext();
 
 export const MovieStore = (props) => {
   const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-  const FAVOURITE_MOVIES_API = process.env.REACT_APP_FAVOURITE_MOVIES_API;
-
   const [externalApiMovies, setExternalApiMovies] = useState([]);
   const [storedMovies, setStoredMovies] = useState([]);
   const [displayedMovies, setDisplayedMovies] = useState([]);
@@ -116,6 +114,19 @@ export const MovieStore = (props) => {
     }
   };
 
+  // Handle search results tabs
+  const [active, setActive] = useState(true);
+
+  const handleCrumbLink = (event) => {
+    if (event.target.innerText === 'Results' && active === true) {
+      setActive(false);
+    }
+
+    if (event.target.innerText === 'Trending' && active === false) {
+      setActive(true);
+    }
+  };
+
   return (
     <MovieContext.Provider
       value={{
@@ -132,6 +143,9 @@ export const MovieStore = (props) => {
         userStatus,
         credentialsWarning,
         setCredentialsWarning,
+        handleCrumbLink,
+        active,
+        setActive,
       }}
     >
       {props.children}

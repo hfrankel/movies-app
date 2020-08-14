@@ -19,6 +19,7 @@ const MovieSelector = () => {
           <img
             src={`http://image.tmdb.org/t/p/w400/${movie.poster_path}`}
             alt={`${movie.title} poster`}
+            className="movie-selector-poster-img"
           />
         </Link>
         <div></div>
