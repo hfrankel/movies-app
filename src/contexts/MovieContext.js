@@ -13,6 +13,8 @@ export const MovieStore = (props) => {
   const [userStatus, setUserStatus] = useState('Login');
   const [adminToken, setAdminToken] = useState({});
   const [credentialsWarning, setCredentialsWarning] = useState('');
+  const [emailWarning, setEmailWarning] = useState(null);
+  const [passwordWarning, setPasswordWarning] = useState(null);
 
   // Login
   const loginUser = async (userEmail, userPassword) => {
@@ -37,7 +39,10 @@ export const MovieStore = (props) => {
         setAdminToken(response.data.jwt);
       }
     } catch (e) {
-      console.log(e);
+      if (e.message.includes('404')) {
+        setEmailWarning('Must have valid email');
+        setPasswordWarning('Must have valid password');
+      }
     }
   };
 
@@ -46,6 +51,8 @@ export const MovieStore = (props) => {
     setUserStatus('Login');
     localStorage.removeItem('token');
     setUserToken(null);
+    setEmailWarning(null);
+    setPasswordWarning(null);
   };
 
   // Get movies from TDMB API
@@ -141,8 +148,10 @@ export const MovieStore = (props) => {
         logoutUser,
         userToken,
         userStatus,
-        credentialsWarning,
-        setCredentialsWarning,
+        emailWarning,
+        setEmailWarning,
+        passwordWarning,
+        setPasswordWarning,
         handleCrumbLink,
         active,
         setActive,
