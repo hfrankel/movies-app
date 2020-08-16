@@ -28,6 +28,7 @@ const MovieInput = ({ setHasSearched, setActive }) => {
           style={{
             width: '250px',
             marginBottom: '20px',
+            fontSize: '16px',
           }}
         />
       </div>

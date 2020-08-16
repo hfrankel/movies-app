@@ -21,6 +21,7 @@ const App = () => {
           flexDirection: 'column',
           alignItems: 'center',
           marginBottom: '40px',
+          fontSize: '16px',
         }}
       />
       <MovieList filterSearch={filterSearch} />
