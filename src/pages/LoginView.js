@@ -48,20 +48,8 @@ const LoginView = () => {
               id="form-input-email"
               autoFocus
               onKeyUp={handleFormInputs}
+              style={{ fontSize: '16px' }}
             />
-            {/* <Form.Field inline>
-              <Input
-                placeholder="Email"
-                onKeyUp={handleFormInputs}
-                id="form-input-email"
-                autoFocus
-              />
-              {emailWarning && (
-                <Label pointing="left" color="red" basic>
-                  {emailWarning}
-                </Label>
-              )}
-            </Form.Field> */}
             <Form.Input
               error={passwordWarning}
               fluid
@@ -69,23 +57,12 @@ const LoginView = () => {
               id="form-input-password"
               onKeyUp={handleFormInputs}
               type="password"
+              style={{ fontSize: '16px' }}
             />
-            {/* <Form.Field inline>
-              <Input
-                placeholder="Password"
-                onKeyUp={handleFormInputs}
-                id="form-input-password"
-                type="password"
-              />
-              {passwordWarning && (
-                <Label pointing="left" color="red" basic>
-                  {passwordWarning}
-                </Label>
-              )}
-            </Form.Field> */}
             <Button
               onClick={() => handleLogin(emailInput, passwordInput)}
               type="submit"
+              style={{ fontSize: '16px' }}
             >
               Submit
             </Button>
@@ -109,6 +86,7 @@ const LoginView = () => {
               id="form-input-email"
               autoFocus
               onKeyUp={handleFormInputs}
+              style={{ fontSize: '16px' }}
             />
             <Form.Input
               error={passwordWarning}
@@ -117,10 +95,12 @@ const LoginView = () => {
               id="form-input-password"
               onKeyUp={handleFormInputs}
               type="password"
+              style={{ fontSize: '16px' }}
             />
             <Button
               onClick={() => handleLogin(emailInput, passwordInput)}
               type="submit"
+              style={{ fontSize: '16px' }}
             >
               Submit
             </Button>
@@ -144,6 +124,7 @@ const LoginView = () => {
               id="form-input-email"
               autoFocus
               onKeyUp={handleFormInputs}
+              style={{ fontSize: '16px' }}
             />
             <Form.Input
               error={passwordWarning}
@@ -152,10 +133,12 @@ const LoginView = () => {
               id="form-input-password"
               onKeyUp={handleFormInputs}
               type="password"
+              style={{ fontSize: '16px' }}
             />
             <Button
               onClick={() => handleLogin(emailInput, passwordInput)}
               type="submit"
+              style={{ fontSize: '16px' }}
             >
               Submit
             </Button>
